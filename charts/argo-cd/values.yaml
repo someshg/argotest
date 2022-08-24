@@ -1,0 +1,23 @@
+namespace: dmc-management
+
+argo-cd:
+  global:
+    image:
+      tag: v2.2.5
+  controller:
+    logFormat: json
+    args:
+      appResyncPeriod: 30
+  dex:
+    enabled: true
+  server:
+    logFormat: json
+    extraArgs:
+      - --insecure
+    resources:
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 50m
+        memory: 64Mi
