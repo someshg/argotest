@@ -1,22 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: root
+  name: argo-cd
   namespace: dmc-management
+  labels:
+    app: argo-cd
+    type: tool
+    dmc: dmc-management
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     name: in-cluster
     namespace: dmc-management
-#    server: https://kubernetes.default.svc
-#    namespace: default
   project: dmc-management
   source:
-    path: apps/
-    repoURL: https://github.com/someshg/argotest
-    targetRevision: HEAD
+    path: charts/argo-cd
+    repoURL: https://github.com/arthurk/argocd-example-install.git
+    targetRevision: master
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+
