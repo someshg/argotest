@@ -11,7 +11,7 @@ spec:
     namespace: dmc-management
 #    server: https://kubernetes.default.svc
 #    namespace: default
-  project: dmc-management
+  project: default
   source:
     path: apps/
     repoURL: https://github.com/someshg/argotest
