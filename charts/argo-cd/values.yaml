@@ -9,15 +9,12 @@ argo-cd:
     args:
       appResyncPeriod: 30
   dex:
-    enabled: true
+    enabled: false
   server:
-    logFormat: json
     extraArgs:
       - --insecure
-    resources:
-      limits:
-        cpu: 100m
-        memory: 128Mi
-      requests:
-        cpu: 50m
-        memory: 64Mi
+    config:
+      repositories: |
+        - type: helm
+          name: argo-cd
+          url: https://argoproj.github.io/argo-helm
